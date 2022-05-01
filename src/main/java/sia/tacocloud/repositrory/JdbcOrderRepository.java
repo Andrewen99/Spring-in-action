@@ -1,6 +1,7 @@
 package sia.tacocloud.repositrory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.PreparedStatementCreatorFactory;
@@ -20,6 +21,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
+@Qualifier("jdbcRepo")
 public class JdbcOrderRepository implements OrderRepository {
 
     private JdbcOperations jdbcOperations;

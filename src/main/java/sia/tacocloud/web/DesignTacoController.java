@@ -11,6 +11,8 @@ import sia.tacocloud.model.Ingredient.Type;
 import sia.tacocloud.model.Taco;
 import sia.tacocloud.model.TacoOrder;
 import sia.tacocloud.repositrory.IngredientRepository;
+import sia.tacocloud.repositrory.JdbcDataIngredientRepository;
+import sia.tacocloud.repositrory.crud_data_jdbc_repo.JdbcDataCrudIngredientRepository;
 
 import javax.validation.Valid;
 import java.util.Arrays;
@@ -25,10 +27,10 @@ import java.util.stream.StreamSupport;
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
 
-    private IngredientRepository ingredientRepo;
+    private JdbcDataCrudIngredientRepository ingredientRepo;
 
     @Autowired
-    public DesignTacoController(IngredientRepository ingredientRepo) {
+    public DesignTacoController(JdbcDataCrudIngredientRepository ingredientRepo) {
         this.ingredientRepo = ingredientRepo;
     }
 

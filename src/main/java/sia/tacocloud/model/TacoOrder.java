@@ -2,6 +2,8 @@ package sia.tacocloud.model;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
@@ -12,11 +14,13 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+@Table
 public class TacoOrder implements Serializable {
 
+    @Id
     private Long Id;
 
-    private Date placedAt;
+    private Date placedAt = new Date();
 
     @NotBlank(message = "Delivery name is required")
     private String deliveryName;
@@ -33,7 +37,8 @@ public class TacoOrder implements Serializable {
     @NotBlank(message = "Zip code is required")
     private String deliveryZip;
 
-    @CreditCardNumber(message = "Not a valid credit card number")
+    @NotBlank(message = "card number is required")
+//    @CreditCardNumber(message = "Not a valid credit card number")
     private String ccNumber;
 
     @Pattern(regexp = "^(0[1-9]|1[0-2]([\\/])([2-9][0-9]))$")
