@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 import sia.tacocloud.model.Ingredient;
 
 /**
- * Это тот же самый JdbcDataIngredientRepository, {@link sia.tacocloud.repositrory.JdbcDataIngredientRepository}
+ * Э
  */
 public interface JdbcDataCrudIngredientRepository extends CrudRepository<Ingredient, String> {
 }
