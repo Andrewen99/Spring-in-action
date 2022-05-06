@@ -1,8 +1,11 @@
 package sia.tacocloud.model;
 
+import com.datastax.oss.driver.api.core.uuid.Uuids;
 import lombok.Data;
+import org.springframework.data.cassandra.core.mapping.Column;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
-import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -10,14 +13,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Data
-@Entity
+@Table("orders")
 public class TacoOrder implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    @PrimaryKey
+    private UUID id = Uuids.timeBased();
 
     private Date placedAt = new Date();
 
@@ -46,11 +49,11 @@ public class TacoOrder implements Serializable {
     @Digits(integer = 3, fraction=0, message = "Invalid CVV")
     private String ccCVV;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Taco> tacos = new ArrayList<>();
+    @Column("tacos")
+    private List<TacoUDT> tacos = new ArrayList<>();
 
     public void addTaco(Taco taco) {
-        tacos.add(taco);
+        tacos.add(new TacoUDT(taco.getName(), taco.getIngredients()));
     }
 }
 

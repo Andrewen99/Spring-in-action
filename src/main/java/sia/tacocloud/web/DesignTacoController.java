@@ -8,17 +8,13 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import sia.tacocloud.model.Ingredient;
 import sia.tacocloud.model.Ingredient.Type;
+import sia.tacocloud.model.IngredientUDT;
 import sia.tacocloud.model.Taco;
 import sia.tacocloud.model.TacoOrder;
-import sia.tacocloud.repositrory.IngredientRepository;
-import sia.tacocloud.repositrory.JdbcDataIngredientRepository;
-import sia.tacocloud.repositrory.crud_data_jdbc_repo.JdbcDataCrudIngredientRepository;
+import sia.tacocloud.repositrory.crud_data_jdbc_repo.CrudIngredientRepository;
 
 import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 @Slf4j
@@ -27,10 +23,10 @@ import java.util.stream.StreamSupport;
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
 
-    private JdbcDataCrudIngredientRepository ingredientRepo;
+    private CrudIngredientRepository ingredientRepo;
 
     @Autowired
-    public DesignTacoController(JdbcDataCrudIngredientRepository ingredientRepo) {
+    public DesignTacoController(CrudIngredientRepository ingredientRepo) {
         this.ingredientRepo = ingredientRepo;
     }
 

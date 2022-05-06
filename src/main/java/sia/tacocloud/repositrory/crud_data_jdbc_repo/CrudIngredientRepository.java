@@ -6,5 +6,5 @@ import sia.tacocloud.model.Ingredient;
 /**
  * Э
  */
-public interface JdbcDataCrudIngredientRepository extends CrudRepository<Ingredient, String> {
+public interface CrudIngredientRepository extends CrudRepository<Ingredient, String> {
 }
