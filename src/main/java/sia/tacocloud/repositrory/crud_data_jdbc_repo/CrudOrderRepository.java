@@ -9,6 +9,6 @@ import java.util.UUID;
 /**
  *
  */
-public interface CrudOrderRepository extends CrudRepository<TacoOrder, UUID> {
+public interface CrudOrderRepository extends CrudRepository<TacoOrder, String> {
 
 }

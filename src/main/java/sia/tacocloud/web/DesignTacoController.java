@@ -8,7 +8,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import sia.tacocloud.model.Ingredient;
 import sia.tacocloud.model.Ingredient.Type;
-import sia.tacocloud.model.IngredientUDT;
 import sia.tacocloud.model.Taco;
 import sia.tacocloud.model.TacoOrder;
 import sia.tacocloud.repositrory.crud_data_jdbc_repo.CrudIngredientRepository;
