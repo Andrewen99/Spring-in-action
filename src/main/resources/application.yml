@@ -2,9 +2,6 @@ spring:
   datasource:
     generate-unique-name: false
     name: tacocloud
-  mongodb:
-    embedded:
-      version: 4.0.21
 
 #  data:
 #    cassandra:
