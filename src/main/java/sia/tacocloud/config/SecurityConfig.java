@@ -2,6 +2,7 @@ package sia.tacocloud.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,16 +40,20 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.
-                   authorizeRequests()
+                           authorizeRequests()
                    .antMatchers("/design", "/orders").hasRole("USER")
                    .antMatchers("/", "/**").permitAll()
 
-                .and()
+                   .and()
                    .formLogin()
                    .loginPage("/login")
                    .defaultSuccessUrl("/design")
 
-               .and()
+                   .and()
+                   .oauth2Login()
+                   .loginPage("/login")
+
+                   .and()
                    .build();
     }
 }

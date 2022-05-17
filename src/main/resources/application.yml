@@ -3,6 +3,17 @@ spring:
     generate-unique-name: false
     name: tacocloud
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 1016574154996-l582a1s124mfs84pcgs3lh65paomkpbe.apps.googleusercontent.com
+            clientSecret: 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
+            scope: email, profile
+
+
+
 #  data:
 #    cassandra:
 #      keyspace-name: taco_cloud
